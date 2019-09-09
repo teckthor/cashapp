@@ -16,7 +16,7 @@
           </div>
 
           <div class="content">
-            <div class="dropdown    ">
+            <div class="dropdown">
               <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span>Base</span>
@@ -31,8 +31,8 @@
                 </div>
               </div>
             </div>
-                <i id="arrows" class="fas fa-exchange-alt"></i>
-            <div class="dropdown    ">
+            <i id="arrows" class="fas fa-exchange-alt"></i>
+            <div class="dropdown">
               <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span>Destino</span>
@@ -47,8 +47,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
           <div class="coinsSelect">
             <p>BTC</p>
@@ -56,11 +54,7 @@
             <p>BRL</p>
           </div>
 
-          <input 
-            type="button"
-            value="Converter"
-            class="button is-primary is-rounded"
-            />
+          <input type="button" value="Converter !" class="button is-primary is-rounded" />
         </div>
       </div>
     </div>
@@ -72,13 +66,7 @@
 export default {
   data() {
     return {
-      items: [
-           'USD',
-           'BRL',
-           'EUR',
-           'BTC',
-           'XMR'
-      ]
+      items: ["USD", "BRL", "EUR", "BTC", "XMR"]
     };
   },
   methods: {
@@ -90,21 +78,22 @@ export default {
 };
 </script>
 <style scoped>
-
 #title i {
   margin-left: 5px;
   color: #42b983;
   transform: rotate(-25deg);
 }
 .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .content #arrows {
-    color: red;
-    font-size: 1.5em;
-    margin-top: 40px;
+  color: red;
+  font-size: 1.5em;
+  margin-top: 40px;
+  animation-duration: 0.3s;
+  animation-name: rotate50;
 }
 .coinsSelect {
   align-items: center;
@@ -121,20 +110,62 @@ export default {
   margin-right: 10px;
   margin-top: 3px;
   color: #42b983;
+  animation-duration: .3s;
+  animation-name: rotate100;
 }
 .dropdown {
-    margin: 20px;
-    margin-bottom: 0px;
+  margin: 20px;
+  margin-bottom: 0px;
 }
 .dropdown-content {
-    width: 100px;
+  width: 100px;
 }
 .card-content .button {
-    margin-top: 20px !important;
-    display: flex;
-    margin: 0 auto;
-    width: 80%;
-    font-size: 1.2em;
+  margin-top: 20px !important;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 1.2em;
 }
-
+@keyframes rotate50 {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+  
+}
+@keyframes rotate100 {
+  0% {
+    transform: rotate(36deg);
+  }
+  10% {
+    transform: rotate(72deg);
+  }
+  20% {
+    transform: rotate(108deg);
+  }
+  30% {
+    transform: rotate(144deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(216deg);
+  }
+  60% {
+    transform: rotate(252deg);
+  }
+  70% {
+    transform: rotate(288deg);
+  }
+  80% {
+    transform: rotate(324deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 </style>
