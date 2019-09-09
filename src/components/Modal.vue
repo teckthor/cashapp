@@ -16,45 +16,39 @@
           </div>
 
           <div class="content">
-            <div class="dropdown">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Base</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item" v-for="item in items" :key="item.id">{{ item }}</a>
-                </div>
-              </div>
-            </div>
+            <!-- Base coin -->
+            <select class="select" v-model="base">
+              <option 
+                v-for="item in items" 
+                :key="item.id">
+                {{item}}
+              </option>
+            </select>
+            
             <i id="arrows" class="fas fa-exchange-alt"></i>
-            <div class="dropdown">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Destino</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item" v-for="item in items" :key="item.id">{{ item }}</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="coinsSelect">
-            <p>BTC</p>
-            <i class="fas fa-arrow-right"></i>
-            <p>BRL</p>
+
+            <!-- Destiny coin -->
+            <select class="select" v-model="destiny">
+              <option 
+                v-for="item in items" 
+                :key="item.id">
+                {{item}}
+              </option>
+            </select>
           </div>
 
-          <input type="button" value="Converter !" class="button is-primary is-rounded" />
+          <div class="coinsSelect">
+            <p>{{ base }}</p>
+            <i class="fas fa-arrow-right"></i>
+            <p>{{ destiny }}</p>
+          </div>
+
+          <input 
+            type="button" 
+            value="Converter !" 
+            class="button is-primary is-rounded"
+            @click="getCoin"
+          />
         </div>
       </div>
     </div>
@@ -66,6 +60,9 @@
 export default {
   data() {
     return {
+      // Default USD - BRL (Dollar to Real)
+      base: "USD",
+      destiny: "BRL",
       items: ["USD", "BRL", "EUR", "BTC", "XMR"]
     };
   },
@@ -73,6 +70,10 @@ export default {
     closeModal() {
       let change = document.getElementById("modal");
       change.classList.remove("is-active");
+    },
+    getCoin() {
+      // Add call for api 
+      console.log(this.base, this.destiny)
     }
   }
 };
@@ -91,7 +92,8 @@ export default {
 .content #arrows {
   color: red;
   font-size: 1.5em;
-  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px; 
   animation-duration: 0.3s;
   animation-name: rotate50;
 }
@@ -110,16 +112,17 @@ export default {
   margin-right: 10px;
   margin-top: 3px;
   color: #42b983;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-name: rotate100;
 }
-.dropdown {
-  margin: 20px;
-  margin-bottom: 0px;
+.select {
+  font-size: 1.2em;
+  border-radius: 4px;
+  background-color: white;
+  padding: 8px;  
+  font-weight: 600;
 }
-.dropdown-content {
-  width: 100px;
-}
+
 .card-content .button {
   margin-top: 20px !important;
   display: flex;
@@ -134,7 +137,6 @@ export default {
   100% {
     transform: rotate(-180deg);
   }
-  
 }
 @keyframes rotate100 {
   0% {
