@@ -72,8 +72,9 @@ export default {
       change.classList.remove("is-active");
     },
     getCoin() {
+      const convertCoins = `${this.base}_${this.destiny}`
       // Add call for api 
-      console.log(this.base, this.destiny)
+      console.log(convertCoins)
     }
   }
 };

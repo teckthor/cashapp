@@ -1,8 +1,19 @@
 <template>
   <div id="app">
+
+    <div class="header">
+
+      <input type="checkbox" />
+      
+      <a class="button is-primary is-outlined"
+        @click="openModal">
+        <i class="fas fa-bars"></i>
+      </a>
+
+    </div>
+
      <h1>R$ {{ moedaA_value }} </h1>
-    <!-- <DayValue /> -->
-    <!-- <Grafic :data="values" :labels="days" /> -->
+
      <input 
       type="button"
       value="Atualizar"
@@ -39,21 +50,33 @@ export default {
       let response = await api('USD','BRL')
       this.moedaA_value = parseFloat(response).toFixed(3)
       // this.getHistorycalValues()
-    }
-    // ,
-    // async getHistorycalValues() {
-    //   let response = await api2('USD','BRL')
-
-    //   days.push(Object.keys(response))
-    //   values.push(Object.values(response))
-
-    //   console.log(values, days)
-    // }
+    },
+    openModal() {
+      let change = document.getElementById("modal");
+      change.classList.add("is-active")
+    },
+    
   }
 }
 </script>
 
 <style scoped>
+.header {
+  top: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between !important;
+}
+.header a {
+  margin: 3px;
+}
+.header input {
+  width: 40px;
+  margin: 3px;
+  /* display: inline; */
+}
+
 h1 {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
