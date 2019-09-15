@@ -14,6 +14,8 @@
 
      <h1>R$ {{ moedaA_value }} </h1>
 
+    <Grafic />
+
      <input 
       type="button"
       value="Atualizar"
@@ -27,17 +29,19 @@
 <script>
 
 // import DayValue from './components/DayValue.vue'
-// import Grafic from './components/Grafic.vue'
+import Grafic from './components/Grafic.vue'
 import Modal from './components/Modal.vue'
 import api from './services/api'
+import store from '../store/index';
 // import api2 from './services/getHistorycalValues'
 
 export default {
+  store,
   name: 'App',
   components: {
-    Modal
+    Modal,
+    Grafic
     // DayValue, 
-    // Grafic
   },
   // props: ["moedaA"],
   data() {
@@ -69,7 +73,7 @@ export default {
   justify-content: space-between !important;
 }
 .header a {
-  margin: 3px;
+  margin: 5px;
 }
 .header input {
   width: 40px;
