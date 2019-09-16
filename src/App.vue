@@ -3,7 +3,17 @@
 
     <div class="header">
 
-      <input type="checkbox" />
+      <div class="on-off">
+        <input 
+        type="checkbox" 
+        id="on-off" 
+        class="on-off-checkbox" 
+        @click="nightActive"
+        title="Botao para acionar o modo noturno"
+        />
+
+        <label for="on-off" class="on-off-button"></label>
+      </div>
       
       <a class="button is-primary is-outlined"
         @click="openModal">
@@ -43,7 +53,8 @@ export default {
   
   data() {
     return {
-      moedaA_value: 0
+      moedaA_value: 0,
+      night: false
     }
   },
   methods: {
@@ -56,6 +67,15 @@ export default {
       let change = document.getElementById("modal");
       change.classList.add("is-active")
     },
+    nightActive() {
+      if (this.night === false) {
+        this.night = true
+        return console.log(this.night)
+        
+      }
+      this.night = false
+      return console.log(this.night)
+    }
     
   },
   computed: {
@@ -77,11 +97,10 @@ export default {
 .header a {
   margin: 5px;
 }
-.header input {
+/* .header input {
   width: 40px;
   margin: 3px;
-
-}
+} */
 
 h1 {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -98,4 +117,51 @@ input{
   display: block !important;
   cursor: pointer;
 }
+.on-off {
+  margin: 10px;
+}
+.on-off-checkbox {
+  position: absolute;
+  left: -9999px;
+}
+
+.on-off-button {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.on-off-button::before,
+.on-off-button::after {
+  content: "";
+  transition: all 0.3s ease;
+}
+
+.on-off-button::before {
+  display: inline-block;
+  width: 2em;
+  height: 1em;
+  background: #f87979;
+  border-radius: 1em; 
+}
+
+.on-off-button::after{
+  position: absolute;
+  top: 0.025em;
+  left: 0.025em;
+  width: 0.95em;
+  height: 0.95em;
+  background: #FFF;
+  border-radius: 100%;
+}
+
+.on-off-checkbox:checked + .on-off-button::before {
+  background-color: #55D069;
+}
+
+.on-off-checkbox:checked + .on-off-button::after {
+  left: 1.025em;
+}
+
 </style>
