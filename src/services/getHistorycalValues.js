@@ -1,4 +1,6 @@
 import axios from 'axios'
+import store from '../../store/index'
+
 const apiKey = `77f1c600cc439db37911`
 
 function endDateValues () {
@@ -18,7 +20,7 @@ function startDateValues () {
     
     let year = date.getFullYear()
     let month = date.getMonth()
-    let day = date.getDate() - 7 // REsolver essa gambi
+    let day = date.getDate() - 7 // Resolver essa gambi
     
     const startDate = `${year}-${month + 1}-${day}`
     return startDate
@@ -33,8 +35,12 @@ async function lastWeekValue(coinA, coinB) {
 
     let values = Object.values(newResponse[0])
     let keys = Object.keys(newResponse[0])
-    return values, keys
+
+    store.commit('newHistoricalValues', values)
+    store.commit('daysChange', keys)
+
+    
 }
-// lastWeekValue('USD', 'BRL')
+
 
 export default lastWeekValue

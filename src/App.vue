@@ -28,12 +28,10 @@
 
 <script>
 
-// import DayValue from './components/DayValue.vue'
 import Grafic from './components/Grafic.vue'
 import Modal from './components/Modal.vue'
 import api from './services/api'
 import store from '../store/index';
-// import api2 from './services/getHistorycalValues'
 
 export default {
   store,
@@ -41,9 +39,8 @@ export default {
   components: {
     Modal,
     Grafic
-    // DayValue, 
   },
-  // props: ["moedaA"],
+  
   data() {
     return {
       moedaA_value: 0
@@ -53,7 +50,7 @@ export default {
     async getCurrentValue() {
       let response = await api(this.base, this.destiny)
       this.moedaA_value = parseFloat(response).toFixed(3)
-      // this.getHistorycalValues()
+     
     },
     openModal() {
       let change = document.getElementById("modal");
@@ -83,7 +80,7 @@ export default {
 .header input {
   width: 40px;
   margin: 3px;
-  /* display: inline; */
+
 }
 
 h1 {

@@ -75,11 +75,9 @@ export default {
       change.classList.remove("is-active");
     },
     async getCurrentValue() {
-      // const convertCoins = `${this.base}_${this.destiny}`
-      // console.log(convertCoins)
+
       let response = await api(this.base, this.destiny)
-      console.log(response)
-      
+  
       store.commit('newDayValue', response.toFixed(3))
       this.closeModal()
       
