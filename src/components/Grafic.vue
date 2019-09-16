@@ -15,7 +15,19 @@ export default {
           {
             label: "Valor dos ultimos 7 dias",
             backgroundColor: "#f87979",
-            data: this.dataValues
+            data: this.dataValues,
+            fill: false,
+            borderColor: "#f87979",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            // borderJoinStyle: 'miter',
+            pointBorderColor: "#f87979",
+            // pointBackgroundColor: "#fff",
+            pointBorderWidth: 2,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
           }
         ]
       },

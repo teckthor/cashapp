@@ -36,10 +36,13 @@ async function lastWeekValue(coinA, coinB) {
     let values = Object.values(newResponse[0])
     let keys = Object.keys(newResponse[0])
 
-    store.commit('newHistoricalValues', values)
-    store.commit('daysChange', keys)
-
+    // console.log('Antes: ', store.state.lastWeekValues)
     
+    store.commit('newHistoricalValues', values)
+
+    // console.log('Depois', store.state.lastWeekValues)
+    
+    store.commit('daysChange', keys)
 }
 
 

@@ -12,7 +12,7 @@ import api2 from '../services/getHistorycalValues'
 import { async } from 'q';
 export default {
   props: ["moedaA"],
-  data(){
+  data(){ 
     return {
       moedaA_value: 4,
       moedaB_value: ''
