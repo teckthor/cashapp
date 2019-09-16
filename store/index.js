@@ -7,13 +7,13 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        dayValue: '',
+        dayValue: '500',
         lastWeekValues: [3.9, 3.88, 3.59, 3.99, 4.2, 4.1, 4.01],
         days: []
     },
     mutations: {
-        newDayValue(state) {
-            state.dayValue = api()
+        newDayValue(state, value) {
+            state.dayValue = value
         },
         newHistoricalValues(state) {
             state.lastWeekValues = lastValues().values

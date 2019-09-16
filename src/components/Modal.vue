@@ -47,7 +47,7 @@
             type="button" 
             value="Converter !" 
             class="button is-primary is-rounded"
-            @click="getCoin"
+            @click="getCurrentValue"
           />
         </div>
       </div>
@@ -57,13 +57,16 @@
 </template>
 
 <script>
+import api from '../services/api'
+import store from '../../store/index';
 export default {
+  store,
   data() {
     return {
       // Default USD - BRL (Dollar to Real)
       base: "USD",
       destiny: "BRL",
-      items: ["USD", "BRL", "EUR", "BTC", "XMR"]
+      items: ["USD", "BRL", "EUR", "BTC"]
     };
   },
   methods: {
@@ -71,10 +74,15 @@ export default {
       let change = document.getElementById("modal");
       change.classList.remove("is-active");
     },
-    getCoin() {
-      const convertCoins = `${this.base}_${this.destiny}`
-      // Add call for api 
-      console.log(convertCoins)
+    async getCurrentValue() {
+      // const convertCoins = `${this.base}_${this.destiny}`
+      // console.log(convertCoins)
+      let response = await api(this.base, this.destiny)
+      console.log(response)
+      
+      store.commit('newDayValue', response.toFixed(3))
+      this.closeModal()
+      
     }
   }
 };

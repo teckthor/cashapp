@@ -12,7 +12,7 @@
 
     </div>
 
-     <h1>R$ {{ moedaA_value }} </h1>
+     <h1>R$ {{ value }} </h1>
 
     <Grafic />
 
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     async getCurrentValue() {
-      let response = await api('USD','BRL')
+      let response = await api(this.base, this.destiny)
       this.moedaA_value = parseFloat(response).toFixed(3)
       // this.getHistorycalValues()
     },
@@ -60,6 +60,11 @@ export default {
       change.classList.add("is-active")
     },
     
+  },
+  computed: {
+    value () {
+      return store.state.dayValue
+    }
   }
 }
 </script>
