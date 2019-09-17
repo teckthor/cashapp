@@ -13,7 +13,7 @@ export default {
         labels: this.daysValues,
         datasets: [
           {
-            label: "Valor dos ultimos 7 dias",
+            label: "Valores dos ultimos 7 dias",
             backgroundColor: "#f87979",
             data: this.dataValues,
             fill: false,

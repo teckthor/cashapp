@@ -24,14 +24,14 @@
 
      <h1>R$ {{ value }} </h1>
 
-    <Grafic />
+    <Grafic ref="renderChart" v-if="storeChange"/>
 
-     <input 
+     <!-- <input 
       type="button"
       value="Atualizar"
       class="button is-primary is-rounded"
-      @click="getCurrentValue"
-      />
+      @click=""
+      /> -->
   <Modal />
   </div>
 </template>
@@ -58,11 +58,6 @@ export default {
     }
   },
   methods: {
-    async getCurrentValue() {
-      let response = await api(this.base, this.destiny)
-      this.moedaA_value = parseFloat(response).toFixed(3)
-     
-    },
     openModal() {
       let change = document.getElementById("modal");
       change.classList.add("is-active")
@@ -70,17 +65,22 @@ export default {
     nightActive() {
       if (this.night === false) {
         this.night = true
-        return console.log(this.night)
+        return console.log('Change to night mode')
         
       }
       this.night = false
-      return console.log(this.night)
+      return console.log('Change to day light mode')
     }
     
   },
   computed: {
     value () {
       return store.state.dayValue
+    },
+    storeChange() {
+      if (store.state.dayValue !== '0' ){
+        return true
+      }
     }
   }
 }
@@ -97,10 +97,6 @@ export default {
 .header a {
   margin: 5px;
 }
-/* .header input {
-  width: 40px;
-  margin: 3px;
-} */
 
 h1 {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

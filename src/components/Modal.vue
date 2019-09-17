@@ -8,7 +8,7 @@
           <div class="media">
             <div class="media-left"></div>
             <div class="media-content">
-              <p id="title" class="title is-5">
+              <p id="title" class="title">
                 Escolha as moedas para conversão
                 <i class="far fa-money-bill-alt"></i>
               </p>
@@ -86,6 +86,9 @@ export default {
 };
 </script>
 <style scoped>
+.title {
+  font-size: 1.12em;
+}
 #title i {
   margin-left: 5px;
   color: #42b983;
