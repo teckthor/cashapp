@@ -24,7 +24,8 @@
 
      <h1>R$ {{ value }} </h1>
 
-    <Grafic ref="renderChart" v-if="storeChange"/>
+    <ApexGrafic />
+    <!-- E do grafico antigo ref="renderChart" v-if="storeChange" -->
 
      <!-- <input 
       type="button"
@@ -38,7 +39,7 @@
 
 <script>
 
-import Grafic from './components/Grafic.vue'
+import ApexGrafic from './components/ApexGrafic.vue'
 import Modal from './components/Modal.vue'
 import api from './services/api'
 import store from '../store/index';
@@ -48,7 +49,7 @@ export default {
   name: 'App',
   components: {
     Modal,
-    Grafic
+    ApexGrafic
   },
   
   data() {

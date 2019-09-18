@@ -4,7 +4,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
 import DayValue from './components/DayValue.vue'
-import Grafic from './components/Grafic.vue'
+import ApexGrafic from './components/ApexGrafic.vue'
 import Modal from './components/Modal.vue'
 
 Vue.use(Vuex)
@@ -13,6 +13,6 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: { App, DayValue, Grafic, Modal },
+  components: { App, DayValue, ApexGrafic, Modal },
   template: '<App/>'
 })
