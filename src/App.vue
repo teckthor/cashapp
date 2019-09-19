@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
 
     <div class="header">
 
@@ -22,9 +22,9 @@
 
     </div>
 
-     <h1>R$ {{ value }} </h1>
+     <h1>$ {{ value }} </h1>
 
-    <ApexGrafic />
+    <ApexGrafic v-if="value != '0'"/>
     <!-- E do grafico antigo ref="renderChart" v-if="storeChange" -->
 
      <!-- <input 
@@ -64,30 +64,48 @@ export default {
       change.classList.add("is-active")
     },
     nightActive() {
+      const nightMode = document.getElementById('app')
+      
       if (this.night === false) {
+        nightMode.classList.remove('light')
+        nightMode.classList.add('night')
         this.night = true
-        return console.log('Change to night mode')
-        
+        return
       }
+      nightMode.classList.add('light')
+      nightMode.classList.remove('night')
       this.night = false
-      return console.log('Change to day light mode')
+      return
     }
-    
   },
   computed: {
     value () {
       return store.state.dayValue
     },
-    storeChange() {
-      if (store.state.dayValue !== '0' ){
-        return true
-      }
-    }
+    // storeChange() {
+    //   if (store.state.dayValue !== '0' ){
+    //     return true
+    //   }
+    // }
   }
 }
 </script>
 
 <style scoped>
+.night {
+  color: white !important;
+  background-color: rgb(41, 40, 40) !important;
+  transition: all 1.5s ease-in-out;
+}
+.light {
+  color: black !important;
+  background-color: white !important;
+  transition: all 1.5s ease-in-out;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
 .header {
   top: 0;
   width: 100%;

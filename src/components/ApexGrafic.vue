@@ -67,7 +67,7 @@ export default {
             strokeWidth: 2,
              
             hover: {
-              size: 7,
+              size: 9,
             }
           },
           yaxis: { 

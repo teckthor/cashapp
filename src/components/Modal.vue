@@ -85,7 +85,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style >
 .title {
   font-size: 1.12em;
 }

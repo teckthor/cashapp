@@ -1,0 +1,22 @@
+{
+    "name": "Cach app",
+    "short_name": "Cash",
+    "icons": [
+        {
+            "src": "",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "theme_color": "#42b983"
+}
