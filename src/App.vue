@@ -24,16 +24,18 @@
 
      <h1>$ {{ value }} </h1>
 
-    <ApexGrafic v-if="value != '0'"/>
-    <!-- E do grafico antigo ref="renderChart" v-if="storeChange" -->
+    <ApexGrafic v-if="value != '0'" v-bind:theme-mode="mode"/>
 
-     <!-- <input 
-      type="button"
-      value="Atualizar"
-      class="button is-primary is-rounded"
-      @click=""
-      /> -->
-  <Modal />
+    <Labels />
+    <Modal />
+
+  
+  <!-- <section v-if="arrayOfValues !== []">
+    <a class="button is-primary is-outlined"
+    v-for="item in arrayOfValues" :key="item.id">
+      {{item}}
+    </a>
+  </section> -->
   </div>
 </template>
 
@@ -41,6 +43,7 @@
 
 import ApexGrafic from './components/ApexGrafic.vue'
 import Modal from './components/Modal.vue'
+import Labels from './components/Labels.vue'
 import api from './services/api'
 import store from '../store/index';
 
@@ -49,17 +52,20 @@ export default {
   name: 'App',
   components: {
     Modal,
-    ApexGrafic
+    ApexGrafic,
+    Labels
   },
   
   data() {
     return {
       moedaA_value: 0,
-      night: false
+      night: false,
+      mode: 'light',
+      arrayOfValues: []
     }
   },
   methods: {
-    openModal() {
+    async openModal() {
       let change = document.getElementById("modal");
       change.classList.add("is-active")
     },
@@ -70,11 +76,15 @@ export default {
         nightMode.classList.remove('light')
         nightMode.classList.add('night')
         this.night = true
+        this.mode = 'dark'
+        // console.log(this.mode, this.night)
         return
       }
       nightMode.classList.add('light')
       nightMode.classList.remove('night')
       this.night = false
+      this.mode = 'light'
+      // console.log(this.mode, this.night)
       return
     }
   },
@@ -82,10 +92,8 @@ export default {
     value () {
       return store.state.dayValue
     },
-    // storeChange() {
-    //   if (store.state.dayValue !== '0' ){
-    //     return true
-    //   }
+    // async percentsValues() {
+    //   return this.arrayOfValues = await store.state.lastWeekValues
     // }
   }
 }
@@ -94,7 +102,7 @@ export default {
 <style scoped>
 .night {
   color: white !important;
-  background-color: rgb(41, 40, 40) !important;
+  background-color: #343F57!important;
   transition: all 1.5s ease-in-out;
 }
 .light {
@@ -163,7 +171,7 @@ input{
 
 .on-off-button::after{
   position: absolute;
-  top: 0.025em;
+  top: 0.10em;
   left: 0.025em;
   width: 0.95em;
   height: 0.95em;

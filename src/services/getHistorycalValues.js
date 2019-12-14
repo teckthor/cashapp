@@ -8,7 +8,7 @@ function endDateValues () {
 
     let year = date.getFullYear()
     let month = date.getMonth()
-    let day = date.getDate() 
+    let day = date.getDate() - 1 
 
     const endDate = `${year}-${month + 1}-${day}`
 
@@ -36,11 +36,12 @@ async function lastWeekValue(coinA, coinB) {
     let values = Object.values(newResponse[0])
     let keys = Object.keys(newResponse[0])
 
-    // console.log('Antes: ', store.state.lastWeekValues)
-    
-    store.commit('newHistoricalValues', values)
+    for (let property in keys) {
+        keys[property] = keys[property].slice(5,10)
+    }
+    // console.log(keys)
 
-    // console.log('Depois', store.state.lastWeekValues)
+    store.commit('newHistoricalValues', values)
     
     store.commit('daysChange', keys)
 }

@@ -6,8 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         dayValue: '0',
-        lastWeekValues: [1, 2, 3, 4, 5, 6, 7],
-        days: [1, 2, 3, 4, 5, 6, 7]
+        lastWeekValues: [],
+        days: []
     },
     mutations: {
         newDayValue(state, value) {

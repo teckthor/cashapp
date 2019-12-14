@@ -20,7 +20,8 @@
             <select class="select" v-model="base">
               <option 
                 v-for="item in items" 
-                :key="item.id">
+                :key="item.id"
+                title="Escolha a moeda para a base da conversão">
                 {{item}}
               </option>
             </select>
@@ -31,7 +32,8 @@
             <select class="select" v-model="destiny">
               <option 
                 v-for="item in items" 
-                :key="item.id">
+                :key="item.id"
+                title="Escolha a moeda para o destino da conversão">
                 {{item}}
               </option>
             </select>
@@ -59,8 +61,12 @@
 <script>
 import api from '../services/api'
 import store from '../../store/index';
+import ApexGrafic from './ApexGrafic'
 export default {
   store,
+  components: {
+    ApexGrafic
+  },
   data() {
     return {
       // Default USD - BRL (Dollar to Real)
@@ -79,6 +85,7 @@ export default {
       let response = await api(this.base, this.destiny)
   
       store.commit('newDayValue', response.toFixed(3))
+  
       this.closeModal()
       
     }
